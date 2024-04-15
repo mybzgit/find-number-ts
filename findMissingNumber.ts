@@ -12,16 +12,11 @@ function findMissingNumber(arr: number[]) {
       obj[arr[i]] = arr[i];
     }
   
-    // delete existed values from the "obj" and add the missing number
+    // check if the number exists in the "obj" else this is the missing number
     for (let i = 0; i < arr.length + 1; i++) {
       const v = min + i;
-      if (obj[v] === v) delete obj[v];
-      else obj[v] = v;
+      if (!obj.hasOwnProperty(v)) return v
     }
-  
-    if (Object.values(obj).length > 0 && Object.values(obj)[0] < max)
-      return Object.values(obj)[0];
-    else return "The sequence of numbers is correct";
   }
   
   function test(arr: number[]) {
